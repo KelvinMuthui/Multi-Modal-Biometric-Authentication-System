@@ -1,0 +1,103 @@
+Project Report Draft
+Title:
+Multimodal Biometric Authentication System Using Voice and Face Recognition
+
+Abstract
+This project presents a secure and robust multimodal biometric authentication system that combines voice recognition and face recognition to verify user identity. By integrating two biometric modalities, the system enhances accuracy and reduces the risk of spoofing compared to unimodal systems. The implementation uses Gaussian Mixture Models (GMM) for voice authentication and the face_recognition library for face verification. The system supports multiple users, real-time video capture, and provides clear user feedback, making it suitable for practical applications requiring high security.
+
+1. Introduction
+Biometric authentication is increasingly important for secure access control. While single biometric modalities like voice or face recognition offer convenience, they are vulnerable to spoofing and environmental challenges. Multimodal biometric systems leverage multiple traits to improve reliability and security. This project develops a multimodal system combining voice and face recognition to authenticate users effectively.
+
+2. Objectives
+Develop a voice authentication module using GMM-based speaker recognition.
+
+Implement a face recognition module using deep learning-based face encodings.
+
+Integrate both modalities for sequential authentication: voice first, then face.
+
+Support multiple users with scalable data management.
+
+Provide real-time feedback and timeout-based authentication flow.
+
+3. System Design and Architecture
+3.1 Voice Authentication
+Voice samples are recorded per user and modeled using Gaussian Mixture Models (GMM).
+
+During authentication, the system compares incoming voice features against stored models to identify the speaker.
+
+3.2 Face Recognition
+User face images are captured and encoded using the face_recognition library.
+
+Encodings are stored individually per user for modularity.
+
+Real-time video capture detects faces and compares encodings to authenticate identity.
+
+3.3 Integration and Workflow
+Voice authentication is performed first to identify the user.
+
+The recognized username is passed to the face authentication module.
+
+Face recognition verifies that the detected face matches the voice-identified user.
+
+Authentication succeeds only if both modalities agree.
+
+4. Implementation Details
+4.1 Data Storage
+Voice models stored as .gmm files in user-specific folders.
+
+Face encodings saved as face_encoding.pkl inside each user’s image folder.
+
+4.2 Software Tools and Libraries
+Python 3.x
+
+face_recognition library for face detection and encoding
+
+opencv-python for video capture and image processing
+
+scikit-learn and numpy for GMM and numerical operations
+
+matplotlib for displaying video frames in notebook environments
+
+4.3 Authentication Flow
+Voice authentication function returns recognized username.
+
+Face authentication loads all user encodings and verifies the face against the voice identity.
+
+Timeout mechanism limits authentication duration to improve user experience.
+
+Final feedback displayed clearly in the interface.
+
+5. Results and Evaluation
+Successfully authenticated multiple users with high accuracy in controlled environments.
+
+Timeout feature prevents indefinite waiting and provides clear success/failure feedback.
+
+Modular data storage allows easy addition/removal of users without affecting others.
+
+Limitations include sensitivity to lighting conditions for face recognition and background noise for voice.
+
+6. Challenges and Solutions
+Handling GUI limitations in some environments by using matplotlib for display.
+
+Managing incremental updates to face encodings by storing per-user pickle files.
+
+Synchronizing voice and face authentication results to avoid mismatches.
+
+7. Future Work
+Enhance robustness with more advanced voice models (e.g., deep learning).
+
+Add liveness detection to prevent spoofing attacks.
+
+Develop a dedicated GUI application for better user interaction.
+
+Extend to other biometric modalities like fingerprint or iris recognition.
+
+8. Conclusion
+This project demonstrates a practical multimodal biometric authentication system that improves security by combining voice and face recognition. The modular design and clear feedback mechanisms make it suitable for real-world applications. With further enhancements, it can serve as a foundation for secure access control systems.
+
+References
+face_recognition Python library
+
+Relevant academic papers on multimodal biometrics and GMM speaker recognition
+
+OpenCV and scikit-learn documentation

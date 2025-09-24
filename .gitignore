@@ -1,0 +1,10 @@
+# Ignore Visual Studio files
+.vs/
+*.vsidx
+
+# Ignore Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Ignore temporary system files
+*.log
+*.tmp
